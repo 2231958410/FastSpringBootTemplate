@@ -91,6 +91,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
         <!-- spring-boot end -->
 
         <!-- mybatis-plus begin -->
@@ -136,6 +137,18 @@
             <version>${swagger2.version}</version>
         </dependency>
         <!-- swagger end -->
+
+        <!-- actuator start -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- actuator end -->
 
         <!-- apache commons start -->
         <dependency>
