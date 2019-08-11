@@ -117,6 +117,7 @@ swagger:
   title: '@artifactId'
   url: ''
   version: 1.0
+# 默认地址 http://host:port/context-path/swagger-ui.html
 #################################### Swagger end #####################################
 
 
