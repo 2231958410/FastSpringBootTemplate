@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 @SpringBootApplication
-@MapperScan("com.springtemplate.system")
+@MapperScan("com.springtemplate.system.test.mapper")
 public class SpringTemplateApplication {
 
 	public static void main(String[] args) {

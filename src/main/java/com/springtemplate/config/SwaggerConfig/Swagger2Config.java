@@ -1,6 +1,6 @@
 
 
-package com.springtemplate.config;
+package com.springtemplate.config.SwaggerConfig;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

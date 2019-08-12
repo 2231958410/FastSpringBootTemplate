@@ -8,10 +8,9 @@ import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
+import com.baomidou.mybatisplus.generator.engine.AbstractTemplateEngine;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * @author Qiu Ping
@@ -47,9 +46,10 @@ public class CodeGenerator {
 		String projectPath = System.getProperty("user.dir");
 		System.out.println(projectPath);
 		gc.setOutputDir(projectPath + "/src/main/java");
+		gc.setBaseResultMap(true);
 		gc.setAuthor("QiuPing");
 		gc.setOpen(false);
-		// gc.setSwagger2(true); 实体属性 Swagger2 注解
+		gc.setSwagger2(true); //实体属性 Swagger2 注解
 		mpg.setGlobalConfig(gc);
 
 		// 数据源配置
@@ -69,9 +69,12 @@ public class CodeGenerator {
 
 		// 自定义配置
 		InjectionConfig cfg = new InjectionConfig() {
+			//自定义属性配置 用于模板解析
 			@Override
 			public void initMap() {
-				// to do nothing
+				Map<String, Object> map = new HashMap<>();
+				map.put("aaa","我是aaa");
+				this.setMap(map);
 			}
 		};
 
@@ -91,16 +94,7 @@ public class CodeGenerator {
 						+ "/" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
 			}
 		});
-        /*
-        cfg.setFileCreate(new IFileCreate() {
-            @Override
-            public boolean isCreate(ConfigBuilder configBuilder, FileType fileType, String filePath) {
-                // 判断自定义文件夹是否需要创建
-                checkDir("调用默认方法创建的目录");
-                return false;
-            }
-        });
-        */
+
 		cfg.setFileOutConfigList(focList);
 		mpg.setCfg(cfg);
 
@@ -109,10 +103,13 @@ public class CodeGenerator {
 
 		// 配置自定义输出模板
 		//指定自定义模板路径，注意不要带上.ftl/.vm, 会根据使用的模板引擎自动识别
-		// templateConfig.setEntity("templates/entity2.java");
-		// templateConfig.setService();
-		// templateConfig.setController();
+		templateConfig.setEntity("template/entity.java");
+		templateConfig.setService("template/service.java");
+		templateConfig.setController("template/controller.java");
+		templateConfig.setServiceImpl("template/serviceImpl.java");
+		templateConfig.setMapper("template/mapper.java");
 
+		//不使用默认的xml生成
 		templateConfig.setXml(null);
 		mpg.setTemplate(templateConfig);
 
@@ -126,7 +123,7 @@ public class CodeGenerator {
 //		strategy.setSuperControllerClass("com.baomidou.ant.common.BaseController");
 //		strategy.setSuperEntityClass("com.baomidou.ant.common.BaseEntity");
 		// 写于父类中的公共字段
-		strategy.setSuperEntityColumns("id");
+//		strategy.setSuperEntityColumns("id");
 		strategy.setInclude(scanner("表名，多个英文逗号分割").split(","));
 		strategy.setControllerMappingHyphenStyle(true);
 		strategy.setTablePrefix(pc.getModuleName() + "_");

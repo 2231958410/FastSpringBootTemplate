@@ -7,6 +7,7 @@
     <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
 
 #end
+
 #if(${baseResultMap})
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="${package.Entity}.${entity}">
@@ -26,6 +27,7 @@
     </resultMap>
 
 #end
+
 #if(${baseColumnList})
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">

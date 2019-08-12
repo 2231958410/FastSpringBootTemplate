@@ -1,0 +1,55 @@
+package ${package.Controller};
+
+
+import io.swagger.annotations.*;
+import org.springframework.web.bind.annotation.*;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import ${package.Service}.${table.serviceName};
+import ${package.Entity}.${entity};
+import com.springtemplate.util.R;
+import lombok.AllArgsConstructor;
+
+
+#if(${restControllerStyle})
+import org.springframework.web.bind.annotation.RestController;
+#else
+import org.springframework.stereotype.Controller;
+#end
+#if(${superControllerClassPackage})
+import ${superControllerClassPackage};
+#end
+
+/**
+ * <p>
+ * $!{table.comment} 前端控制器
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+
+@RestController
+@AllArgsConstructor
+@Api(tags = "$!{table.comment}")
+@RequestMapping("/${package.ModuleName}/${entity}" )
+public class ${table.controllerName} {
+
+    private final  ${table.serviceName} ${entity}service;
+
+    /**
+     * 分页查询
+     * @param page 分页对象
+     * @param ${entity} $!{table.comment}
+     * @return
+     */
+    @ApiOperation(value = "查询分页对象" , response = R.class)
+    @ApiImplicitParams({
+		    @ApiImplicitParam(name = "page", value = "分页对象", required = true, paramType = "query", dataType = "Page"),
+		    @ApiImplicitParam(name = "${entity}", value = "$!{table.comment}", required = true, paramType = "query", dataType = "$!{table.comment}")
+    })
+    @GetMapping("/page" )
+    public R get${entity}Page(Page page, ${entity} ${entity}) {
+        return new R<>(${entity}service.page(page, Wrappers.query(${entity})));
+    }
+}
