@@ -6,8 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @author Qiu Ping
- * Knowledge:
- * Desc:
  */
 
 @SpringBootApplication

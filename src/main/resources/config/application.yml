@@ -131,4 +131,9 @@ management:
     health:
       show-details: ALWAYS
     logfile:
-      enabled: true         #可在线查看日志
+      enabled: true #可在线查看日志
+
+# logging配置
+logging:
+  config: classpath:config/logback.xml
+
