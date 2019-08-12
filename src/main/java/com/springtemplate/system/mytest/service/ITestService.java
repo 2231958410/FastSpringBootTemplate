@@ -15,4 +15,4 @@ import com.springtemplate.system.mytest.entity.Test;
 
 public interface ITestService extends IService<Test> {
 
-		}
+}

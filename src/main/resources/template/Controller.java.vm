@@ -1,6 +1,5 @@
 package ${package.Controller};
 
-
 import io.swagger.annotations.*;
 import org.springframework.web.bind.annotation.*;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -52,4 +51,48 @@ public class ${table.controllerName} {
     public R get${entity}Page(Page page, ${entity} ${entity}) {
         return new R<>(${entity}service.page(page, Wrappers.query(${entity})));
     }
+
+    /**
+     * 通过id查询
+     * @param ${keyPropertyName} 主键id
+     * @return R
+     */
+    @ApiOperation(value = "通过主键ID查询" , response = R.class)
+    @GetMapping("/{${keyPropertyName}}" )
+    public R getById(@PathVariable("${keyPropertyName}" ) Integer ${keyPropertyName}) {
+		return new R<>(${entity}service.getById(${keyPropertyName}));
+    }
+
+    /**
+     * 新增$$!{table.comment}
+     * @param ${entity} $!{table.comment}
+     * @return R
+     */
+    @ApiOperation(value = "新增${entity}" , response = R.class)
+    @PostMapping
+    public R save(@RequestBody ${entity} _${entity}){
+		return new R<>(${entity}service.save(_${entity}));
+		}
+
+    /**
+     * 修改$!{table.comment}
+     * @param ${entity} $!{table.comment}
+     * @return R
+     */
+    @ApiOperation(value = "修改$!{table.comment}" , response = R.class)
+    @PutMapping
+    public R updateById(@RequestBody ${entity} _${entity}) {
+		return new R<>(${entity}service.updateById(_${entity}));
+		}
+
+    /**
+     * 通过${keyPropertyName}删除$!{table.comment}
+     * @param ${keyPropertyName} 主键
+     * @return R
+     */
+    @ApiOperation(value = "删除$!{table.comment}" , response = R.class)
+    @DeleteMapping("/{${keyPropertyName}}" )
+    public R removeById(@PathVariable Integer _${keyPropertyName}) {
+		return new R<>(${entity}service.removeById(_${keyPropertyName}));
+		}
 }
