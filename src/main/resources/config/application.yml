@@ -4,7 +4,7 @@
 server:
   port: 8888
   servlet:
-    context-path: /api
+    context-path: /
 ############################# 访问路径、端口tomcat end ##############################
 
 
@@ -51,7 +51,6 @@ mybatis-plus:
 spring:
   ##数据库连接信息
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
     ###################以下为druid增加的配置###########################
     type: com.alibaba.druid.pool.DruidDataSource
     # 下面为连接池的补充设置，应用到上面所有数据源中
@@ -136,4 +135,12 @@ management:
 # logging配置
 logging:
   config: classpath:config/logback.xml
+
+#邮箱验证码有效时间/分钟
+code:
+  expiration: 5
+
+#登录图形验证码有效时间/分钟
+loginCode:
+  expiration: 2
 

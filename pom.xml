@@ -232,6 +232,12 @@
             <version>${jwt.version}</version>
         </dependency>
 
+        <!--spring security-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
         <!--tool-->
         <dependency>
             <groupId>cn.hutool</groupId>

@@ -82,6 +82,7 @@ public class R<T> implements Serializable {
 	}
 
 	public static <T> R<T> ok() {
+
 		return restResult(null, CommonConstants.SUCCESS, null);
 	}
 

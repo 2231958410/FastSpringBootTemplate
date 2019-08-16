@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
-import com.baomidou.mybatisplus.generator.engine.AbstractTemplateEngine;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.util.*;
 
@@ -18,6 +18,7 @@ import java.util.*;
  * @date 2019/8/10
  */
 public class CodeGenerator {
+
 	/**
 	 * <p>
 	 * 读取控制台内容
@@ -54,7 +55,7 @@ public class CodeGenerator {
 
 		// 数据源配置
 		DataSourceConfig dsc = new DataSourceConfig();
-		dsc.setUrl("jdbc:mysql://localhost:3306/test?useUnicode=true&useSSL=false&characterEncoding=utf8");
+		dsc.setUrl("jdbc:mysql://localhost:3306/eladmin?useUnicode=true&useSSL=false&characterEncoding=utf8");
 		// dsc.setSchemaName("public");
 		dsc.setDriverName("com.mysql.jdbc.Driver");
 		dsc.setUsername("root");

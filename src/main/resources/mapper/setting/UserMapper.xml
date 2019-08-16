@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springtemplate.system.setting.mapper.UserMapper">
+
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.springtemplate.system.setting.entity.User">
+        <id column="id" property="id" />
+        <result column="avatar" property="avatar" />
+        <result column="create_time" property="createTime" />
+        <result column="email" property="email" />
+        <result column="enabled" property="enabled" />
+        <result column="password" property="password" />
+        <result column="username" property="username" />
+        <result column="last_password_reset_time" property="lastPasswordResetTime" />
+        <result column="dept_id" property="deptId" />
+        <result column="phone" property="phone" />
+        <result column="job_id" property="jobId" />
+    </resultMap>
+
+
+    <!-- UserVO映射结果集 -->
+    <resultMap id="USER_VO" type="com.springtemplate.security.VO.UserVO">
+        <id column="id" property="id" />
+        <result column="avatar" property="avatar" />
+        <result column="create_time" property="createTime" />
+        <result column="email" property="email" />
+        <result column="enabled" property="enabled" />
+        <result column="password" property="password" />
+        <result column="username" property="username" />
+        <result column="last_password_reset_time" property="lastPasswordResetTime" />
+        <result column="dept_id" property="deptId" />
+        <result column="phone" property="phone" />
+        <result column="job_id" property="jobId" />
+        <collection property="roles" javaType="ArrayList" ofType="com.springtemplate.system.setting.entity.Role" column="role_id">
+            <id column="roleid" property="id" />
+            <result column="create_time" property="createTime" />
+            <result column="name" property="name" />
+            <result column="remark" property="remark" />
+            <result column="data_scope" property="dataScope" />
+            <result column="level" property="level" />
+        </collection>
+    </resultMap>
+
+
+    <select id="getUserVOByName" resultMap="USER_VO">
+        select a.*,b.id as roleid,b.create_time,b.name,b.remark,b.data_scope,b.level from user a,role b,users_roles c
+        where a.id = c.user_id
+        and b.id = c.role_id
+        and a.username = #{username}
+    </select>
+
+
+</mapper>

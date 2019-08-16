@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springtemplate.system.setting.mapper.MenuMapper">
+
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.springtemplate.system.setting.entity.Menu">
+        <id column="id" property="id" />
+        <result column="create_time" property="createTime" />
+        <result column="i_frame" property="iFrame" />
+        <result column="name" property="name" />
+        <result column="component" property="component" />
+        <result column="pid" property="pid" />
+        <result column="sort" property="sort" />
+        <result column="icon" property="icon" />
+        <result column="path" property="path" />
+    </resultMap>
+
+    <resultMap id="MenuDTO" type="com.springtemplate.system.setting.DTO.MenuDTO">
+        <id column="id" property="id" />
+        <result column="create_time" property="createTime" />
+        <result column="i_frame" property="iFrame" />
+        <result column="name" property="name" />
+        <result column="component" property="component" />
+        <result column="pid" property="pid" />
+        <result column="sort" property="sort" />
+        <result column="icon" property="icon" />
+        <result column="path" property="path" />
+        <collection property="children" ofType="com.springtemplate.system.setting.DTO.MenuDTO">
+            <id column="c_id" property="id" />
+            <result column="c_create_time" property="createTime" />
+            <result column="c_i_frame" property="iFrame" />
+            <result column="c_name" property="name" />
+            <result column="c_component" property="component" />
+            <result column="c_pid" property="pid" />
+            <result column="c_sort" property="sort" />
+            <result column="c_icon" property="icon" />
+            <result column="c_path" property="path" />
+        </collection>
+    </resultMap>
+
+    <select id="getMenuDTOById" resultMap="MenuDTO">
+        select a.*,
+               b.id as c_id,
+               b.create_time as c_creat_time,
+               b.i_frame as c_i_frame,
+               b.name as c_name,
+               b.component as c_component,
+               b.pid as c_pid,
+               b.sort as c_sort,
+               b.icon as c_icon,
+               b.path as c_path
+        from menu a,menu b
+        where a.id = b.pid
+        and a.id = #{id}
+    </select>
+
+
+</mapper>
