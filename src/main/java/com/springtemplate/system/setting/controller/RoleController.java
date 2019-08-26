@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @AllArgsConstructor
 @Api(tags = "")
-@RequestMapping("/setting/Role" )
+@RequestMapping("/setting/role" )
 public class RoleController {
 
     private final  IRoleService Roleservice;
@@ -85,7 +85,7 @@ public class RoleController {
      */
     @ApiOperation(value = "删除" , response = R.class)
     @DeleteMapping("/{id}" )
-    public R removeById(@PathVariable Integer _id) {
+    public R removeById(@PathVariable("id") Integer _id) {
 		return new R<>(Roleservice.removeById(_id));
 		}
 }

@@ -1,6 +1,7 @@
 package com.springtemplate.system.setting.service.impl;
 
 import cn.hutool.core.util.StrUtil;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.springtemplate.system.setting.DTO.MenuDTO;
 import com.springtemplate.system.setting.VO.MenuMetaVo;
 import com.springtemplate.system.setting.VO.MenuVo;
@@ -27,34 +28,41 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 	@Autowired
 	MenuMapper menuMapper;
 
+
 	@Override
 	public MenuDTO getMenuDTOById(String id) {
 		return menuMapper.getMenuDTOById(id);
 	}
 
 	@Override
+	public MenuDTO getMenuDTOByIdChi(String id) {
+		return menuMapper.getMenuDTOByIdChi(id);
+	}
+
+	@Override
 	public Object getMenuTree(List<Menu> menus) {
-//		List<Map<String,Object>> list = new LinkedList<>();
-//		menus.forEach(menu -> {
-//					if (menu!=null){
-//						List<Menu> menuList = menuRepository.findByPid(menu.getId());
-//						Map<String,Object> map = new HashMap<>();
-//						map.put("id",menu.getId());
-//						map.put("label",menu.getName());
-//						if(menuList!=null && menuList.size()!=0){
-//							map.put("children",getMenuTree(menuList));
-//						}
-//						list.add(map);
-//					}
-//				}
-//		);
-//		return list;
-		return null;
+		List<Map<String,Object>> list = new LinkedList<>();
+		menus.forEach(menu -> {
+					if (menu!=null){
+						List<Menu> menuList = menuMapper.selectList(new QueryWrapper<Menu>().eq("pid",menu.getId()));
+						Map<String,Object> map = new HashMap<>();
+						map.put("id",menu.getId());
+						map.put("label",menu.getName());
+						if(menuList!=null && menuList.size()!=0){
+							map.put("children",getMenuTree(menuList));
+						}
+						list.add(map);
+					}
+				}
+		);
+		return list;
 	}
 
 	@Override
 	public Map buildTree(List<MenuDTO> menuDTOS) {
 		List<MenuDTO> trees = new ArrayList<MenuDTO>();
+
+		System.out.println(menuDTOS.size());
 
 		for (MenuDTO menuDTO : menuDTOS) {
 
@@ -130,11 +138,9 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 		);
 		return list;
 	}
+
 	@Override
 	public Menu findOne(Long id) {
-//		Optional<Menu> menu = menuRepository.findById(id);
-//		ValidationUtil.isNull(menu,"Menu","id",id);
-//		return menu.get();
 		return null;
 	}
 }

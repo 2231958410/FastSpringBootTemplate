@@ -22,11 +22,20 @@ import java.util.Map;
 public interface IMenuService extends IService<Menu> {
 
 	/**
-	 * 根据MenuId获取MenuDTO
+	 * 根据MenuId获取MenuDTO 父节点
 	 * @param id
 	 * @return
 	 */
 	MenuDTO getMenuDTOById(String id);
+
+	/**
+	 * 根据MenuId获取MenuDTO 子节点
+	 * @param id
+	 * @return
+	 */
+	MenuDTO getMenuDTOByIdChi(String id);
+
+
 
 
 	/**

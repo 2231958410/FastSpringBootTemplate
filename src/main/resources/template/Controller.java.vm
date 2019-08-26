@@ -59,7 +59,7 @@ public class ${table.controllerName} {
      */
     @ApiOperation(value = "通过主键ID查询" , response = R.class)
     @GetMapping("/{${keyPropertyName}}" )
-    public R getById(@PathVariable("${keyPropertyName}" ) Integer ${keyPropertyName}) {
+    public R getById(@PathVariable("${keyPropertyName}") Integer ${keyPropertyName}) {
 		return new R<>(${entity}service.getById(${keyPropertyName}));
     }
 
@@ -92,7 +92,7 @@ public class ${table.controllerName} {
      */
     @ApiOperation(value = "删除$!{table.comment}" , response = R.class)
     @DeleteMapping("/{${keyPropertyName}}" )
-    public R removeById(@PathVariable Integer _${keyPropertyName}) {
+    public R removeById(@PathVariable("${keyPropertyName}") Integer _${keyPropertyName}) {
 		return new R<>(${entity}service.removeById(_${keyPropertyName}));
 		}
 }

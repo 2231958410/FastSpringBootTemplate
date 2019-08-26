@@ -1,15 +1,18 @@
 package com.springtemplate.system.setting.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.springtemplate.security.Util.GetMenuTool;
 import com.springtemplate.security.Util.SecurityUtils;
 import com.springtemplate.security.VO.UserVO;
 import com.springtemplate.system.setting.DTO.MenuDTO;
+import com.springtemplate.system.setting.entity.Menu;
 import com.springtemplate.system.setting.service.IMenuService;
 import com.springtemplate.system.setting.service.IRoleService;
 import com.springtemplate.system.setting.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -56,11 +59,11 @@ public class MenuController {
      * 返回全部的菜单
      * @return
      */
-//    @GetMapping(value = "/menus/tree")
+    @GetMapping(value = "/menus/tree")
 //    @PreAuthorize("hasAnyRole('ADMIN','MENU_ALL','MENU_CREATE','MENU_EDIT','ROLES_SELECT','ROLES_ALL')")
-//    public ResponseEntity getMenuTree(){
-//        return new ResponseEntity(menuService.getMenuTree(menuService.findByPid(0L)),HttpStatus.OK);
-//    }
+    public ResponseEntity getMenuTree(){
+        return new ResponseEntity(menuService.getMenuTree(menuService.list(new QueryWrapper<Menu>().eq("pid","0"))),HttpStatus.OK);
+    }
 
 //    @Log("查询菜单")
 //    @GetMapping(value = "/menus")

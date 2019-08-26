@@ -1,12 +1,15 @@
 package com.springtemplate.system.setting.service.impl;
 
 import com.springtemplate.security.VO.UserVO;
+import com.springtemplate.system.setting.DTO.UserRoleDTO;
 import com.springtemplate.system.setting.entity.User;
 import com.springtemplate.system.setting.mapper.UserMapper;
 import com.springtemplate.system.setting.service.IUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -25,5 +28,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 	@Override
 	public UserVO getUserVOByName(String username) {
 		return userMapper.getUserVOByName(username);
+	}
+
+	@Override
+	public List<UserRoleDTO> getUserRoleArrayList() {
+		return userMapper.getUserRoleArrayList();
 	}
 }

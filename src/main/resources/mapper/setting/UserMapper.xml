@@ -42,12 +42,28 @@
         </collection>
     </resultMap>
 
-
     <select id="getUserVOByName" resultMap="USER_VO">
         select a.*,b.id as roleid,b.create_time,b.name,b.remark,b.data_scope,b.level from user a,role b,users_roles c
         where a.id = c.user_id
         and b.id = c.role_id
         and a.username = #{username}
+    </select>
+
+
+
+    <!--UserRoleDTO-->
+    <resultMap id="UserRoleDTO" type="com.springtemplate.system.setting.DTO.UserRoleDTO">
+        <id column="id" property="id" />
+        <result column="username" property="username" />
+        <result column="name" property="name" />
+        <result column="remark" property="remark" />
+    </resultMap>
+
+
+    <select id="getUserRoleArrayList" resultMap="UserRoleDTO">
+        select a.id,a.username,b.name,b.remark from user a,role b, users_roles c
+        where a.id = c.user_id
+        and b.id = c.role_id
     </select>
 
 

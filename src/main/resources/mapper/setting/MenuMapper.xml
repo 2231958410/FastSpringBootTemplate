@@ -39,6 +39,7 @@
         </collection>
     </resultMap>
 
+    <!--是父节点的MenuDTO-->
     <select id="getMenuDTOById" resultMap="MenuDTO">
         select a.*,
                b.id as c_id,
@@ -54,6 +55,10 @@
         where a.id = b.pid
         and a.id = #{id}
     </select>
+
+
+
+
 
 
 </mapper>

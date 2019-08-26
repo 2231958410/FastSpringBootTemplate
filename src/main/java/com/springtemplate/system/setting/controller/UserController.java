@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @AllArgsConstructor
 @Api(tags = "")
-@RequestMapping("/setting/User" )
+@RequestMapping("/setting/user" )
 public class UserController {
 
     private final  IUserService Userservice;
@@ -52,7 +52,7 @@ public class UserController {
      */
     @ApiOperation(value = "通过主键ID查询" , response = R.class)
     @GetMapping("/{id}" )
-    public R getById(@PathVariable("id" ) Integer id) {
+    public R getById(@PathVariable("id") Integer id) {
 		return new R<>(Userservice.getById(id));
     }
 
@@ -85,7 +85,7 @@ public class UserController {
      */
     @ApiOperation(value = "删除" , response = R.class)
     @DeleteMapping("/{id}" )
-    public R removeById(@PathVariable Integer _id) {
+    public R removeById(@PathVariable("id") Integer _id) {
 		return new R<>(Userservice.removeById(_id));
 		}
 }

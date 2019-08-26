@@ -24,15 +24,15 @@
         <collection property="permissions"  ofType="com.springtemplate.system.setting.entity.Permission">
             <id column="perid" property="id" />
             <result column="alias" property="alias" />
-            <result column="create_time" property="createTime" />
-            <result column="name" property="name" />
+            <result column="per_create_time" property="createTime" />
+            <result column="per_name" property="name" />
             <result column="pid" property="pid" />
         </collection>
         <collection property="menus" ofType="com.springtemplate.system.setting.entity.Menu">
             <id column="menuid" property="id"  />
             <result column="menu_create_time" property="createTime" />
             <result column="i_frame" property="iFrame" />
-            <result column="name" property="name" />
+            <result column="menu_name" property="name" />
             <result column="component" property="component" />
             <result column="pid" property="pid" />
             <result column="sort" property="sort" />
@@ -44,8 +44,8 @@
     <!--包含关联查询字段冲突-->
     <select id="getRoleVOByRoleIds" resultMap="RoleVO">
       select a.*,
-      b.id as perid,b.alias,b.create_time,b.name,b.pid,
-      c.id as menuid,c.create_time as menu_creat_time,c.i_frame,c.name,c.component
+      b.id as perid,b.alias,b.create_time as per_create_time,b.name as per_name,b.pid,
+      c.id as menuid,c.create_time as menu_create_time,c.i_frame,c.name as menu_name,c.component
       from role a,permission b,menu c,roles_permissions d,roles_menus e
       where a.id = d.role_id
       and b.id = d.permission_id
