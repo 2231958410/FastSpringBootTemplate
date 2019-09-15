@@ -1,15 +1,21 @@
 package com.springtemplate.system.setting.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.springtemplate.security.Util.GetMenuTool;
 import com.springtemplate.security.Util.SecurityUtils;
 import com.springtemplate.security.VO.UserVO;
 import com.springtemplate.system.setting.DTO.MenuDTO;
 import com.springtemplate.system.setting.entity.Menu;
+import com.springtemplate.system.setting.entity.Role;
 import com.springtemplate.system.setting.service.IMenuService;
 import com.springtemplate.system.setting.service.IRoleService;
 import com.springtemplate.system.setting.service.IUserService;
 import com.springtemplate.util.R;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +28,7 @@ import java.util.List;
  * @date 2018-12-03
  */
 @RestController
-@RequestMapping("/menus")
+@RequestMapping("/setting/menus")
 public class MenuController {
 
     @Autowired
@@ -86,6 +92,37 @@ public class MenuController {
         return R.failed();
 
     }
+
+
+    /**
+     * 分页查询
+     * @param page 分页对象
+     * @param menu
+     * @return
+     */
+    @ApiOperation(value = "查询分页对象" , response = R.class)
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "page", value = "分页对象", required = true, paramType = "query", dataType = "Page"),
+            @ApiImplicitParam(name = "Role", value = "", required = true, paramType = "query", dataType = "")
+    })
+    @GetMapping("/page" )
+    public R getRolePage(Page page, Menu menu) {
+        return new R<>(menuService.page(page, Wrappers.query(menu)));
+    }
+
+
+    /**
+     * 通过id查询
+     * @param id 主键id
+     * @return R
+     */
+    @ApiOperation(value = "通过主键ID查询" , response = R.class)
+    @GetMapping("/{id}" )
+    public R getById(@PathVariable("id" ) Integer id) {
+        return new R<>(menuService.getById(id));
+    }
+
+
 
 
 }

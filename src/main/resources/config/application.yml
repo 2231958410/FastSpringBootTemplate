@@ -98,7 +98,7 @@ spring:
         max-wait: 10s
         min-idle: 2
       shutdown-timeout: 3s
-    host: 127.0.0.1
+    host: localhost
     password: 123456
 ############################### Redis 公共配置 end ##################################
 
