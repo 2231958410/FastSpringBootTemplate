@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 
 import java.time.LocalDateTime;
 import java.io.Serializable;
+import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
@@ -35,9 +36,7 @@ public class Menu implements Serializable {
 	private Long id;
 
 	@ApiModelProperty(value = "创建日期")
-	@DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
-	private LocalDateTime createTime;
+	private Date createTime;
 
 	@ApiModelProperty(value = "是否外链")
 	private Boolean iFrame;

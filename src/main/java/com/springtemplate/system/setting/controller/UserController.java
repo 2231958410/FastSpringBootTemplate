@@ -58,7 +58,7 @@ public class UserController {
 
     /**
      * 新增$
-     * @param User 
+     * @param _User
      * @return R
      */
     @ApiOperation(value = "新增User" , response = R.class)
@@ -69,7 +69,7 @@ public class UserController {
 
     /**
      * 修改
-     * @param User 
+     * @param _User
      * @return R
      */
     @ApiOperation(value = "修改" , response = R.class)
@@ -80,7 +80,7 @@ public class UserController {
 
     /**
      * 通过id删除
-     * @param id 主键
+     * @param _id 主键
      * @return R
      */
     @ApiOperation(value = "删除" , response = R.class)

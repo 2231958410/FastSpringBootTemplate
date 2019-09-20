@@ -26,7 +26,7 @@ public class user_roleContorller {
 
 	/**
 	 * 通过id查询
-	 * @param none
+	 * @param
 	 * @return R
 	 */
 	@ApiOperation(value = "查询角色和用户关系映射" , response = R.class)

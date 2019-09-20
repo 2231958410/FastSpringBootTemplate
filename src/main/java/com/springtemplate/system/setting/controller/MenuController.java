@@ -8,7 +8,6 @@ import com.springtemplate.security.Util.SecurityUtils;
 import com.springtemplate.security.VO.UserVO;
 import com.springtemplate.system.setting.DTO.MenuDTO;
 import com.springtemplate.system.setting.entity.Menu;
-import com.springtemplate.system.setting.entity.Role;
 import com.springtemplate.system.setting.service.IMenuService;
 import com.springtemplate.system.setting.service.IRoleService;
 import com.springtemplate.system.setting.service.IUserService;
@@ -122,6 +121,38 @@ public class MenuController {
         return new R<>(menuService.getById(id));
     }
 
+    /**
+     * 新增$
+     * @param menu
+     * @return R
+     */
+    @ApiOperation(value = "新增User" , response = R.class)
+    @PostMapping
+    public R save(@RequestBody Menu menu){
+        return new R<>(menuService.save(menu));
+    }
+
+    /**
+     * 修改
+     * @param menu
+     * @return R
+     */
+    @ApiOperation(value = "修改" , response = R.class)
+    @PutMapping
+    public R updateById(@RequestBody Menu menu) {
+        return new R<>(menuService.updateById(menu));
+    }
+
+    /**
+     * 通过id删除
+     * @param id 主键
+     * @return R
+     */
+    @ApiOperation(value = "删除" , response = R.class)
+    @DeleteMapping("/{id}" )
+    public R removeById(@PathVariable("id") Integer id) {
+        return new R<>(menuService.removeById(id));
+    }
 
 
 

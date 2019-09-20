@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 
 import java.time.LocalDateTime;
 import java.io.Serializable;
+import java.util.Date;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -36,7 +37,7 @@ public class Permission implements Serializable {
 	private String alias;
 
 	@ApiModelProperty(value = "创建日期")
-	private LocalDateTime createTime;
+	private Date createTime;
 
 	@ApiModelProperty(value = "名称")
 	private String name;

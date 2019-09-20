@@ -58,7 +58,7 @@ public class RoleController {
 
     /**
      * 新增$
-     * @param Role 
+     * @param _Role
      * @return R
      */
     @ApiOperation(value = "新增Role" , response = R.class)
@@ -69,7 +69,7 @@ public class RoleController {
 
     /**
      * 修改
-     * @param Role 
+     * @param _Role
      * @return R
      */
     @ApiOperation(value = "修改" , response = R.class)
@@ -80,7 +80,7 @@ public class RoleController {
 
     /**
      * 通过id删除
-     * @param id 主键
+     * @param _id 主键
      * @return R
      */
     @ApiOperation(value = "删除" , response = R.class)
