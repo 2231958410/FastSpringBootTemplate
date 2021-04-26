@@ -35,7 +35,7 @@
         <!--<mysql.version>8.0.16</mysql.version>-->
         <mysql.version>5.1.41</mysql.version>
         <druid.version>1.1.18</druid.version>
-        <commons-io.version>2.6</commons-io.version>
+        <commons-io.version>2.7</commons-io.version>
         <reflections.version>0.9.11</reflections.version>
         <hibernate-validator.version>6.0.17.Final</hibernate-validator.version>
         <commons-codec.version>1.12</commons-codec.version>
